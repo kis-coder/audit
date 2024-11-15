@@ -2,6 +2,8 @@ import axios from "axios"
 import { AppDispatch } from "../store"
 import { IUser } from "../../models/IUser"
 import { usersSlice } from "./UserSlice"
+import { leftMenuSlice } from "./LeftMenuSlice"
+import { Routes } from "../../type"
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
     {
@@ -14,5 +16,12 @@ export const fetchUsers = () => async (dispatch: AppDispatch) => {
             dispatch(usersSlice.actions.userError(e.message))
         }
 
+    }
+}
+
+export const routePage = (payload: Routes) => (dispatch: AppDispatch) => {
+    {
+        console.log(payload)
+        dispatch(leftMenuSlice.actions.routeTo(payload))
     }
 }

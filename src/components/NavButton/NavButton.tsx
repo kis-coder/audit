@@ -1,15 +1,29 @@
 import { useNavigate } from 'react-router-dom'
 
-import './Button.scss'
+import './NavButton.scss'
 import { ButtonProps } from '../../type'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { routePage } from '../../redux/reducers/ActionCreators'
+import { NavIcon } from '../NavIcon/NavIcon'
 
-export const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
+export const NavButton: React.FC<ButtonProps> = (props: ButtonProps) => {
 
     const navigate = useNavigate()
+    const { name, isPageLoading } = useAppSelector((state) => state.leftMenuReducer)
+    const dispatch = useAppDispatch()
 
     return (
-        <div className='NavButton' onClick={()=>navigate(props.routeTo ?? '/')} data-type={props.type}>
+        <div className='NavButton' data-active={name === props.routeTo ? 'active' : '4'} onClick={() => {
+
+            dispatch(routePage(props.routeTo ?? '/'))
+
+            navigate(props.routeTo ?? '/')
+        }}>
+            <div className='NavBox'>
             <span>{props.text}</span>
+            </div>
+            
+
         </div>
     )
 }

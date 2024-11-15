@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from './reducers/UserSlice'
 import { postApi } from "../service/PostService";
+import leftMenuReducer from "./reducers/LeftMenuSlice";
 
 
 const rootReducer = combineReducers({
     userReducer,
+    leftMenuReducer,
     [postApi.reducerPath]: postApi.reducer
 })
 

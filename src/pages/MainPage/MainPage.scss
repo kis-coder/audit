@@ -18,19 +18,23 @@
 
     .headMenuBox {
         grid-area: header;
-        background-color: aquamarine;
+        background-color: white;
     }
     .leftMenuBox{
-        background-color: cadetblue;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 10px 0px 2px;
+        gap: 2px;
+        background-color: white;
         grid-area: leftmenu;
     }
     .contentBox{
-        background-color: yellow;
+        background-color: white;
         grid-area: content;
     }
 
     .footerBox {
-        background-color: aquamarine;
+        background-color: white;
         grid-area: footer;
     }
 

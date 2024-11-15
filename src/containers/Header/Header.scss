@@ -1,11 +1,11 @@
 @import '../../colors.scss';
 
 .Header {
-    background-color: green;
+    background-color: white;
     height: 100%;
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: 1fr 7fr 1fr;
 
     & h3 {
         margin: 0;

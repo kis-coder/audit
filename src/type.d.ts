@@ -4,8 +4,16 @@ export type InputProps = {
     changeFunction: Function
 }
 
-export type ButtonProps = {
+export type Routes = 'main' | '/' | null | 'admin' | 'schema' | 'issues'
+
+export interface PagesNames {
+    name: Routes,
+    isPageLoading: boolean
+}
+
+
+export interface ButtonProps {
     type: 'login' | 'signin' | 'increment' | 'navigate',
     text: string,
-    routeTo?: 'main' | '/' | null
+    routeTo?: Routes
 }
