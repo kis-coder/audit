@@ -1,12 +1,11 @@
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../../components/Button/Button'
-import { CheckBox } from '../../components/CheckBox/CheckBox'
+
 import { Input } from '../../components/Input/Input'
-import { XButton } from '../../components/XButton/XButton'
+
 import './LoginForm.scss'
 import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { usersSlice } from '../../redux/reducers/UserSlice'
+
 
 export const LoginForm: React.FC = () => {
 

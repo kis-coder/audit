@@ -1,26 +1,23 @@
-import { Navigate, useNavigate } from 'react-router-dom'
-import { Button } from '../../components/Button/Button'
-import { CheckBox } from '../../components/CheckBox/CheckBox'
-import { Input } from '../../components/Input/Input'
-import { XButton } from '../../components/XButton/XButton'
 import './ServicesBox.scss'
-import { useState } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { usersSlice } from '../../redux/reducers/UserSlice'
+
 import { ServiceStatus } from '../../components/ServiceStatus/ServiceStatus'
+import { KISv2 } from '../../components/KISv2/KISv2'
 
 export const ServicesBox: React.FC = () => {
     const possibleStatus = [200, 400, 500]
     const statuses  =  []
-    for (let i = 0; i < 20; i++){
-        statuses.push(possibleStatus[Math.floor(Math.random() * 3)])               
+    for (let i = 1; i < 21; i++){
+        statuses.push({status: possibleStatus[Math.floor(Math.random() * 3)],
+            className: `div${i}`
+        })               
     }
+    
     return (
         <div className='ServicesBox' >
             {
                 statuses.map(dataStatus=><ServiceStatus {...{dataStatus}} />)
             }
-            
+            <KISv2 dataStatus={{status: 'KIS', className: 'div25'}} />
         </div>
     )
 }

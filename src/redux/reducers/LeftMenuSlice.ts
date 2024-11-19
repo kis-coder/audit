@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PagesNames, Routes } from "../../type";
+import { IPagesNames, RoutesType } from "../../type";
 
-const initialState: PagesNames = {
+const initialState: IPagesNames = {
     name: 'admin',
     isPageLoading: false 
 }
@@ -10,7 +10,7 @@ export const leftMenuSlice = createSlice({
     name: 'pageName',
     initialState,
     reducers: {
-        routeTo (state, action: PayloadAction<Routes>){
+        routeTo (state, action: PayloadAction<RoutesType>){
             state.name = action.payload
         }
     }

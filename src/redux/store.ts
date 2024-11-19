@@ -1,19 +1,19 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from './reducers/UserSlice'
-import { postApi } from "../service/PostService";
+import { reportsApi } from "../service/ReportService";
 import leftMenuReducer from "./reducers/LeftMenuSlice";
 
 
 const rootReducer = combineReducers({
     userReducer,
     leftMenuReducer,
-    [postApi.reducerPath]: postApi.reducer
+    [reportsApi.reducerPath]: reportsApi.reducer
 })
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(postApi.middleware) 
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(reportsApi.middleware) 
     })
 }
 

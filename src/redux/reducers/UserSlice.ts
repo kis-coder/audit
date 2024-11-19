@@ -1,37 +1,29 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../models/IUser"
+import { IReportMessage } from "../../type";
 
-interface UserState {
-    users: IUser[];
+interface IReportsState {
+    reports: IReportMessage[];
     isLoading: boolean;
     error: string;
-    flag: boolean;
-    num: number
 }
 
-const initialState: UserState = {
-    users: [],
+const initialState: IReportsState = {
+    reports: [],
     isLoading: false,
     error: '',
-    flag: false,
-    num: 0
 }
 
-
-export const usersSlice = createSlice({
+export const reportSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        increment (state, action: PayloadAction<number>){
-            state.num = action.payload
-        },
         usersFetching (state){
             state.isLoading = true
         },
-        userSuccess (state, action: PayloadAction<IUser[]>) {
+        userSuccess (state, action: PayloadAction<IReportMessage[]>) {
             state.isLoading = false
             state.error = ''
-            state.users = [...action.payload]
+            state.reports = [...action.payload]
         },
         userError (state, action: PayloadAction<string>) {
             state.isLoading = false
@@ -40,4 +32,4 @@ export const usersSlice = createSlice({
     }
 })
 
-export default usersSlice.reducer; 
+export default reportSlice.reducer; 

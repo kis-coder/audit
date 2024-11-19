@@ -1,21 +1,25 @@
 import { useNavigate } from 'react-router-dom'
 import './Header.scss'
 import { HeaderInfo } from '../HeaderInfo/HeaderInfo'
+import { routePage } from '../../redux/reducers/ActionCreators'
+import { useAppDispatch } from '../../hooks/redux'
+import { Button } from '../../components/Button/Button'
 
 export const Header: React.FC = () => {
 
-const navigate = useNavigate()
-
+    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
     return (
         <div className='Header'>
-           <HeaderInfo/>
-           <div className='PageInfo'>
+            <HeaderInfo />
+            <div className='PageInfo'>
 
-           </div>
+            </div>
             <div className="AuthInfo">
-                <span>User_name</span>
+
                 <span>Admin</span>
-                <button onClick={() => navigate('/', { replace: false })}>EXIT</button>
+
+                <Button type={'navigate'} text={'Выход'} />
             </div>
         </div>
     )
