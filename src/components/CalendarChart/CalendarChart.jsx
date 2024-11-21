@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { ResponsiveBar } from '@nivo/bar'
 import { ResponsiveCalendar } from '@nivo/calendar'
+import { MONTHS } from '../../utils'
 import './CalendarChart.scss'
 
 
@@ -3084,7 +3085,7 @@ export const CalendarChart = (props) => {
         colors={[ '#61cdbb', '#97e3d5', '#e8c1a0', '#f47560' ]}
         margin={{ top: 40, right: 40, bottom: 40, left: 40 }}
         yearSpacing={40}
-        monthLegend={(y, m, date)=>'месяц'}
+        monthLegend={(y, m, date)=>MONTHS[m]}
         monthBorderColor="#ffffff"
         dayBorderWidth={2}
         dayBorderColor="#ffffff"
