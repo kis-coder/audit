@@ -29,8 +29,9 @@
         grid-area: leftmenu;
     }
     .contentBox{
-        background-color: white;
         grid-area: content;
+        height: 100%;
+      
     }
 
     .footerBox {

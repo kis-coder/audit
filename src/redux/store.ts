@@ -1,18 +1,22 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from './reducers/UserSlice'
 import { reportsApi } from "../service/ReportService";
 import leftMenuReducer from "./reducers/LeftMenuSlice";
 import ModalWindowReducer from "./reducers/ModalWindowSlice";
+import filterIssuesReducer from "./reducers/FilterIssuesSlice";
+import { filterIssuesSlice } from "./reducers/FilterIssuesSlice";
+import reportsReducer from "./reducers/DataReducer";
 
 
 const rootReducer = combineReducers({
-    userReducer,
     leftMenuReducer,
     ModalWindowReducer,
+    filterIssuesReducer, 
+    reportsReducer,
     [reportsApi.reducerPath]: reportsApi.reducer
 })
 
 export const setupStore = () => {
+  
     return configureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(reportsApi.middleware) 

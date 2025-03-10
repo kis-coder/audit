@@ -3,14 +3,18 @@ import { IReportMessage } from '../type'
 
 export const reportsApi = createApi({
     reducerPath: '',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL}),
+    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL || 'http://172.16.68.159'}),
     endpoints: (build) => ({
         fetchAllReports: build.query<IReportMessage[], unknown>({
-            query: () => ({
-                url: '/reportMessages',
-                method: 'GET'
-            })
+            query: () => {
+                return {
+                    url: '/reportMessages',
+                    method: 'GET'
+                }
+            }
         }),
-        
     })
 })
+
+
+

@@ -9,22 +9,27 @@ import { Header } from '../../containers/Header/Header'
 import { AdminPage } from '../AdminPage/AdminPage'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { NavButton } from '../../components/NavButton/NavButton'
-import { IReportMessage, IUser } from '../../type'
-import { reportsApi } from '../../service/ReportService'
 import { ModalWindow } from '../../components/ModalWindow/ModalWindow'
+import data from '../../db.json'
+import { setLoading, setPings, setReports } from '../../redux/reducers/ActionCreators'
 
 
 
 export const MainPage: React.FC = () => {
 
     const dispatch = useAppDispatch()
-    //const { data: posts, error, isLoading, refetch } = reportsApi.useFetchAllReportsQuery(0)
-
-    // const handdleCreate = async () => {
-    //     const title = prompt('vvedite')
-    //     await createPost({ title, body: title } as IPost)
-    // }
-
+    const {reports} = useAppSelector((state) => state.reportsReducer)
+    
+    useEffect(()=>{
+        setTimeout(()=>{
+            const datas:any[] = data.reportMessages
+            const pings:any[] = data.systemsPing
+            dispatch(setLoading(false))
+            dispatch(setReports(datas))
+            dispatch(setPings(pings))
+        }, 10)
+        setTimeout(()=>{dispatch(setLoading(true))}, 0)
+    }, [])
     return (
         <>
         <ModalWindow/>
@@ -33,18 +38,19 @@ export const MainPage: React.FC = () => {
             <Header />
         </header>
         <aside className='leftMenuBox'>
-            <NavButton type='login' text={'Админка'} routeTo={'admin'} />
+            {/* <NavButton type='login' text={'Админка'} routeTo={'admin'} /> */}
             <NavButton type='login' text={'Обзор'} routeTo={'observe'} />
             <NavButton type='login' text={'Аналитика'} routeTo={'analitics'} />
             <NavButton type='login' text={'Отчеты'} routeTo={'issues'} />
-            <NavButton type='login' text={'Схема'} routeTo={'schema'} />
+            <NavButton type='login' text={'Проверки'} routeTo={'pings'} />
+            {/* {<NavButton type='login' text={'Схема'} routeTo={'schema'} />} */}
         </aside>
         <section className='contentBox'>
             <Outlet />
         </section>
-        <footer className='footerBox'>
-            <Footer />
-        </footer>
+                {/* <footer className='footerBox'>
+                    <Footer />
+                </footer> */}
     </section></>
         
     )
